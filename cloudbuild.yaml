@@ -5,6 +5,15 @@ steps:
   entrypoint: 'mvn'
   args: ['clean', 'install', '-DskipTests']
 
+# This step builds the container image.
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build
+  args:
+  - 'build'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/ptps-customer-reporting:$SHORT_SHA'
+  - '.'
+
 # This step pushes the image to Container Registry
 # The PROJECT_ID and SHORT_SHA variables are automatically
 # replaced by Cloud Build.
@@ -12,7 +21,7 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'gcr.io/$PROJECT_ID/ptps-payment-settlement:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/ptps-customer-reporting:$SHORT_SHA'
 
 # This step deploys the new version of our container image
 # in the hello-cloudbuild Kubernetes Engine cluster.
