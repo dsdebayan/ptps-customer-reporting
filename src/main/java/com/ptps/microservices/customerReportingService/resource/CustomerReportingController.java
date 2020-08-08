@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class CustomerReportingController {
 
@@ -21,11 +23,13 @@ public class CustomerReportingController {
 	private TaxPaymentOrderRepository repository;
 
 	@GetMapping("/")
+	@ApiOperation(value = "Health Check")
 	public String imHealthy() {
 		return "{healthy:true}";
 	}
 
 	@GetMapping("/customer-reporting/orders/{customerName}/{year}/{month}")
+	@ApiOperation(value = "Retrieve Payment Order for a customer for specific year and month")
 	public List<TaxPaymentOrder> retrievePaymentOrder(@PathVariable String customerName,
 			@PathVariable int year, @PathVariable int month) {
 
