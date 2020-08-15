@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
 #      - image: dsdebayan/customer-reporting:0.0.1-RELEASE #CHANGE
-      - image: gcr.io/fine-chariot-285305/ptps-customer-reporting:latest
+      - image: gcr.io/fine-chariot-285305/ptps-customer-reporting:$SHORT_SHA
         imagePullPolicy: IfNotPresent
         name: customer-reporting
         env:
