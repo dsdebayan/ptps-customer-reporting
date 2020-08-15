@@ -27,14 +27,8 @@ spec:
         imagePullPolicy: IfNotPresent
         name: customer-reporting
         env:
-#          - name: CURRENCY_EXCHANGE_URI
-#            value: http://currency-exchange
-#          - name: SPRING_CLOUD_GCP_TRACE_ENABLED
-#            value: "true"
           - name: RDS_HOSTNAME
             value: mysql
-#          - name: SPRING_PROFILES_ACTIVE
-#            value: kubernetes
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
